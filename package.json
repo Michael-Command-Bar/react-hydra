@@ -1,0 +1,26 @@
+{
+  "name": "react-hydra",
+  "version": "0.4.0",
+  "description": "A service for server-side rendering of react components",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "react": "^0.13.3",
+    "express": "^4.12.4",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^6.0.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "keywords": [
+    "react",
+    "SEO"
+  ],
+  "author": "Adam Kent <adam@adamkent.me>",
+  "license": "MIT"
+}
