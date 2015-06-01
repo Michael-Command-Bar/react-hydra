@@ -1,7 +1,7 @@
 What is Hydra?
 ================
 
-Hydra exposes the renderToString() and renderToStaticMarkup() methods within React.js as a service. It is intended as a way of using a React.js front-end without losing the benefits of SEO in non-javascript server languages.
+Hydra exposes the renderToString() and renderToStaticMarkup() methods within React.js as a HTTP service. It is intended as a way of using a React.js front-end without losing the benefits of SEO in non-javascript server languages.
 
 Installation
 ================
@@ -51,6 +51,42 @@ Here is a sample *package.json* file, the important part is the hydra script, th
   }
 }
 ```
+
+Usage
+=============
+
+The Hydra service is a simple HTTP server that is listening for requests on *http://localhost:<port>/renderToString/<react_component_name>* and *http://localhost:<port>/renderToStaticMarkup/<react_component_name>*. Where *<react_component_name>* is the same string you would use in a require statement.
+
+Requests
+-------------
+
+Requests have the following rules:
+
+ - the request must be a POST
+ - the body of the request must be the *application/json* type
+ - the body of the request must be at least an empty json object
+
+The body of the request is the object that is passed to the react components props.
+
+```
+POST /renderToString/test/foo.js HTTP/1.1
+Host: localhost:10054
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+    "name": "test"
+}
+```
+
+Responses
+-------------
+
+If the request is valid the response is a HTML string containing the rendered markup. Otherwise the appropriate HTTP code is returned.
+
+
+
+
 
 Copyright (c) 2015, Adam Kent
 All rights reserved.
